@@ -38,6 +38,9 @@ export function stringifyNode(node: MfmNode): string {
 		case 'search': {
 			return node.props.content;
 		}
+		case 'imageSearch': {
+			return node.props.content;
+		}
 		case 'blockCode': {
 			return `\`\`\`${ node.props.lang ?? '' }\n${ node.props.code }\n\`\`\``;
 		}

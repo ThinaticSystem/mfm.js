@@ -3,6 +3,7 @@
 		// block
 		QUOTE,
 		SEARCH,
+		IMAGE_SEARCH,
 		CODE_BLOCK,
 		MATH_BLOCK,
 		CENTER,
@@ -103,6 +104,7 @@ full
 	/ fn
 	/ link
 	/ search // block
+	/ imageSearch // block
 	/ inlineText
 
 inline
@@ -169,6 +171,22 @@ searchKey
 	= "[" ("検索" / "Search"i) "]" { return text(); }
 	/ "検索"
 	/ "Search"i
+
+// block: imageSearch
+
+imageSearch
+	= BEGIN q:imageSearchQuery sp:_ key:imageSearchKey END
+{
+	return IMAGE_SEARCH(q, `${ q }${ sp }${ key }`);
+}
+
+imageSearchQuery
+	= (!(_ imageSearchKey END) CHAR)+ { return text(); }
+
+imageSearchKey
+	= "[" ("画像検索" / "ImageSearch"i) "]" { return text(); }
+	/ "画像検索"
+	/ "ImageSearch"i
 
 // block: codeBlock
 

@@ -3,6 +3,7 @@
 ブロック構文:
 - [引用ブロック](#quote)
 - [検索ブロック](#search)
+- [画像検索ブロック](#image-search)
 - [コードブロック](#code-block)
 - [数式ブロック](#math-block)
 - [中央寄せブロック](#center)
@@ -74,6 +75,32 @@ MFM 書き方 [検索]
   props: {
     query: 'MFM 書き方',
     content: 'MFM 書き方 Search'
+  }
+}
+```
+
+
+
+<h1 id="image-search">Block: 画像検索ブロック</h2>
+
+## 形式
+```
+DOG DAYS エクレ ImageSearch
+DOG DAYS エクレ 画像検索
+DOG DAYS エクレ [ImageSearch]
+DOG DAYS エクレ [画像検索]
+```
+
+## 詳細
+- ImageSearchの大文字小文字は区別されない。
+
+## ノード
+```js
+{
+  type: 'imageSearch',
+  props: {
+    query: 'DOG DAYS エクレ',
+    content: 'DOG DAYS エクレ ImageSearch'
   }
 }
 ```

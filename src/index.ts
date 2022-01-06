@@ -17,6 +17,7 @@ export {
 	// block
 	MfmQuote,
 	MfmSearch,
+	MfmImageSearch,
 	MfmCodeBlock,
 	MfmMathBlock,
 	MfmCenter,
@@ -42,6 +43,7 @@ export {
 	// block
 	QUOTE,
 	SEARCH,
+	IMAGE_SEARCH,
 	CODE_BLOCK,
 	MATH_BLOCK,
 	CENTER,

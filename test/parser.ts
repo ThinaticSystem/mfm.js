@@ -1,7 +1,7 @@
 import assert from 'assert';
 import * as mfm from '../src/index';
 import {
-	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, CODE_BLOCK, LINK, INLINE_CODE, MATH_INLINE
+	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, IMAGE_SEARCH, CODE_BLOCK, LINK, INLINE_CODE, MATH_INLINE
 } from '../src/index';
 
 describe('PlainParser', () => {
@@ -195,6 +195,62 @@ hoge`;
 			const output = [
 				TEXT('abc'),
 				SEARCH('hoge piyo bebeyo', 'hoge piyo bebeyo 検索'),
+				TEXT('123')
+			];
+			assert.deepStrictEqual(mfm.parse(input), output);
+		});
+	});
+
+	describe('image search', () => {
+		describe('画像検索構文を使用できる', () => {
+			it('ImageSearch', () => {
+				const input = 'DOG DAYS エクレ 14 ImageSearch';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+			it('[ImageSearch]', () => {
+				const input = 'DOG DAYS エクレ 14 [ImageSearch]';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+			it('imagesearch', () => {
+				const input = 'DOG DAYS エクレ 14 imagesearch';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+			it('[imagesearch]', () => {
+				const input = 'DOG DAYS エクレ 14 [imagesearch]';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+			it('画像検索', () => {
+				const input = 'DOG DAYS エクレ 14 画像検索';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+			it('[画像検索]', () => {
+				const input = 'DOG DAYS エクレ 14 [画像検索]';
+				const output = [
+					IMAGE_SEARCH('DOG DAYS エクレ 14', input)
+				];
+				assert.deepStrictEqual(mfm.parse(input), output);
+			});
+		});
+		it('ブロックの前後にあるテキストが正しく解釈される', () => {
+			const input = 'abc\nhoge piyo bebeyo 画像検索\n123';
+			const output = [
+				TEXT('abc'),
+				IMAGE_SEARCH('hoge piyo bebeyo', 'hoge piyo bebeyo 画像検索'),
 				TEXT('123')
 			];
 			assert.deepStrictEqual(mfm.parse(input), output);

@@ -1,7 +1,7 @@
 import assert from 'assert';
 import * as mfm from '../src/index';
 import {
-	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, CODE_BLOCK, LINK
+	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, IMAGE_SEARCH, CODE_BLOCK, LINK
 } from '../src/index';
 
 describe('API', () => {
