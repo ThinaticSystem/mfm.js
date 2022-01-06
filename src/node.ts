@@ -2,7 +2,7 @@ export type MfmNode = MfmBlock | MfmInline;
 
 export type MfmPlainNode = MfmUnicodeEmoji | MfmEmojiCode | MfmText;
 
-export type MfmBlock = MfmQuote | MfmSearch | MfmCodeBlock | MfmMathBlock | MfmCenter;
+export type MfmBlock = MfmQuote | MfmSearch | MfmImageSearch | MfmCodeBlock | MfmMathBlock | MfmCenter;
 
 const blockTypes: MfmNode['type'][] = [ 'quote', 'search', 'blockCode', 'mathBlock', 'center' ];
 export function isMfmBlock(node: MfmNode): node is MfmBlock {
@@ -25,6 +25,16 @@ export type MfmSearch = {
 	children?: [];
 };
 export const SEARCH = (query: string, content: string): NodeType<'search'> => { return { type:'search', props: { query, content } }; };
+
+export type MfmImageSearch = {
+	type: 'imageSearch';
+	props: {
+		query: string;
+		content: string;
+	};
+	children?: [];
+};
+export const IMAGE_SEARCH = (query: string, content: string): NodeType<'imageSearch'> => { return { type:'imageSearch', props: { query, content } }; };
 
 export type MfmCodeBlock = {
 	type: 'blockCode';
@@ -181,6 +191,7 @@ export const TEXT = (value: string): NodeType<'text'> => { return { type:'text',
 export type NodeType<T extends MfmNode['type']> =
 	T extends 'quote' ? MfmQuote :
 	T extends 'search' ? MfmSearch :
+	T extends 'imageSearch' ? MfmImageSearch :
 	T extends 'blockCode' ? MfmCodeBlock :
 	T extends 'mathBlock' ? MfmMathBlock :
 	T extends 'center' ? MfmCenter :
