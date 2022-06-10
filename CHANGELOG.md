@@ -11,12 +11,48 @@
 
 -->
 
+## 0.22.1
+
+npm: https://www.npmjs.com/package/mfm-js/v/0.22.1
+
+### Improvements
+- Removes a unnecessary built file
+
+## 0.22.0
+
+npm: https://www.npmjs.com/package/mfm-js/v/0.22.0
+
+### Features
+- Unicode emoji supports Unicode 14.0 emoji (#109)
+
+### Improvements
+- `（）` pair is available on outside the hashtag (#111)
+- Changes specs the center tag and strike (#108, 100fb0b)
+- Improves link label parsing (#107)
+
+### Bugfixes
+- If there is a `[]` pair before the link, it will be mistakenly recognized as a part of link label. (#104)
+
+## 0.21.0
+
+npm: https://www.npmjs.com/package/mfm-js/v/0.21.0
+
+### Features
+- Supports nestLimit option. (#87, #91)
+
+### Improvements
+- Improve generation of brackets property of url node.
+
+### Bugfixes
+- Fix the Link node of the enclosed in `<>`. (#84)
+- Fix parsing of the link label.
+
 ## 0.20.0
 
 npm: https://www.npmjs.com/package/mfm-js/v/0.20.0
 
 ### Features
-- Add tag syntaxes of bold and strikethrough. (#76)
+- Add tag syntaxes of bold `<b></b>` and strikethrough `<s></s>`. (#76)
 - Supports whitelisting of MFM function names. (#77)
 
 ### Improvements

@@ -3,14 +3,14 @@ export {
 	parsePlain,
 	toString,
 	inspect,
-	extract
+	extract,
 } from './api';
 
 export {
 	NodeType,
 	MfmNode,
 	MfmBlock,
-	MfmInline
+	MfmInline,
 } from './node';
 
 export {
@@ -36,7 +36,7 @@ export {
 	MfmUrl,
 	MfmLink,
 	MfmFn,
-	MfmText
+	MfmText,
 } from './node';
 
 export {
@@ -62,5 +62,5 @@ export {
 	N_URL,
 	LINK,
 	FN,
-	TEXT
+	TEXT,
 } from './node';
