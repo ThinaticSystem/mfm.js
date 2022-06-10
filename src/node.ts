@@ -62,7 +62,7 @@ export type MfmCenter = {
 };
 export const CENTER = (children: MfmInline[]): NodeType<'center'> => { return { type: 'center', children }; };
 
-export type MfmInline = MfmUnicodeEmoji | MfmEmojiCode | MfmBold | MfmSmall | MfmItalic | MfmStrike |
+export type MfmInline = MfmUnicodeEmoji | MfmEmojiCode | MfmBold | MfmSmall | MfmSmell | MfmItalic | MfmStrike |
 	MfmInlineCode | MfmMathInline | MfmMention | MfmHashtag | MfmUrl | MfmLink | MfmFn | MfmText;
 
 export type MfmUnicodeEmoji = {
@@ -96,6 +96,13 @@ export type MfmSmall = {
 	children: MfmInline[];
 };
 export const SMALL = (children: MfmInline[]): NodeType<'small'> => { return { type: 'small', children }; };
+
+export type MfmSmell = {
+	type: 'smell';
+	props?: Record<string, unknown>;
+	children: MfmInline[];
+};
+export const SMELL = (children: MfmInline[]): NodeType<'smell'> => { return { type: 'smell', children }; };
 
 export type MfmItalic = {
 	type: 'italic';
@@ -203,6 +210,7 @@ export type NodeType<T extends MfmNode['type']> =
 	T extends 'emojiCode' ? MfmEmojiCode :
 	T extends 'bold' ? MfmBold :
 	T extends 'small' ? MfmSmall :
+	T extends 'smell' ? MfmSmell :
 	T extends 'italic' ? MfmItalic :
 	T extends 'strike' ? MfmStrike :
 	T extends 'inlineCode' ? MfmInlineCode :

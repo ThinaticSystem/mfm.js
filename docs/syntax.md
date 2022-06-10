@@ -12,6 +12,7 @@
 - [揺れる字](#big)
 - [太字](#bold)
 - [目立たない字](#small)
+- [香ばしい字](#smell)
 - [イタリック](#italic)
 - [打ち消し線](#strike)
 - [インラインコード](#inline-code)
@@ -288,6 +289,30 @@ __bold__
   type: 'small',
   children: [
     { type: 'text', props: { text: 'small' } }
+  ]
+}
+```
+
+
+
+<h1 id="smell">Inline: 目立たない字</h2>
+
+## 形式
+```
+<smell>smell</smell>
+```
+
+## 詳細
+- 内容には再度InlineParserを適用する。
+- 内容を空にすることはできない。
+- 内容にはすべての文字、改行が使用できる。
+
+## ノード
+```js
+{
+  type: 'smell',
+  children: [
+    { type: 'text', props: { text: 'smell' } }
   ]
 }
 ```

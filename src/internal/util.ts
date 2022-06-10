@@ -63,6 +63,9 @@ export function stringifyNode(node: MfmNode): string {
 		case 'small': {
 			return `<small>${ stringifyTree(node.children) }</small>`;
 		}
+		case 'smell': {
+			return `<smell>${ stringifyTree(node.children) }</smell>`;
+		}
 		case 'italic': {
 			return `<i>${ stringifyTree(node.children) }</i>`;
 		}

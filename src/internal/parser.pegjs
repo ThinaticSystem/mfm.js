@@ -13,6 +13,7 @@
 		EMOJI_CODE,
 		BOLD,
 		SMALL,
+		SMELL,
 		ITALIC,
 		STRIKE,
 		INLINE_CODE,
@@ -119,6 +120,7 @@ full
 	/ big
 	/ bold
 	/ small
+	/ smell
 	/ italic
 	/ strike
 	/ inlineCode
@@ -138,6 +140,7 @@ inline
 	/ big
 	/ bold
 	/ small
+	/ smell
 	/ italic
 	/ strike
 	/ inlineCode
@@ -155,6 +158,7 @@ L_inline
 	/ L_big
 	/ L_bold
 	/ L_small
+	/ L_smell
 	/ L_italic
 	/ L_strike
 	/ inlineCode
@@ -371,6 +375,26 @@ L_small
 
 L_smallContent
 	= &{ return enterNest(); } @(@(!"</small>" @L_inline)+ &{ return leaveNest(); } / &{ return fallbackNest(); })
+
+// inline: smell
+
+smell
+	= "<smell>" content:smallContent "</smell>"
+{
+	return SMELL(mergeText(content));
+}
+
+smellContent
+	= &{ return enterNest(); } @(@(!"</smell>" @inline)+ &{ return leaveNest(); } / &{ return fallbackNest(); })
+
+L_smell
+	= "<smell>" content:L_smellContent "</smell>"
+{
+	return SMELL(mergeText(content));
+}
+
+L_smellContent
+	= &{ return enterNest(); } @(@(!"</smell>" @L_inline)+ &{ return leaveNest(); } / &{ return fallbackNest(); })
 
 // inline: italic
 
