@@ -379,7 +379,7 @@ L_smallContent
 // inline: smell
 
 smell
-	= "<smell>" content:smallContent "</smell>"
+	= "<smell>" content:smellContent "</smell>"
 {
 	return SMELL(mergeText(content));
 }

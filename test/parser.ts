@@ -1,7 +1,7 @@
 import assert from 'assert';
 import * as mfm from '../src/index';
 import {
-	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, IMAGE_SEARCH, CODE_BLOCK, LINK, INLINE_CODE, MATH_INLINE
+	TEXT, CENTER, FN, UNI_EMOJI, MENTION, EMOJI_CODE, HASHTAG, N_URL, BOLD, SMALL, SMELL, ITALIC, STRIKE, QUOTE, MATH_BLOCK, SEARCH, IMAGE_SEARCH, CODE_BLOCK, LINK, INLINE_CODE, MATH_INLINE
 } from '../src/index';
 
 describe('PlainParser', () => {
@@ -521,6 +521,44 @@ hoge`;
 			const input = '<small>abc\n**123**\nabc</small>';
 			const output = [
 				SMALL([
+					TEXT('abc\n'),
+					BOLD([
+						TEXT('123')
+					]),
+					TEXT('\nabc')
+				])
+			];
+			assert.deepStrictEqual(mfm.parse(input), output);
+		});
+	});
+
+	describe('smell', () => {
+		it('basic', () => {
+			const input = '<smell>abc</smell>';
+			const output = [
+				SMELL([
+					TEXT('abc')
+				])
+			];
+			assert.deepStrictEqual(mfm.parse(input), output);
+		});
+		it('内容にはインライン構文を利用できる', () => {
+			const input = '<smell>abc**123**abc</smell>';
+			const output = [
+				SMELL([
+					TEXT('abc'),
+					BOLD([
+						TEXT('123')
+					]),
+					TEXT('abc')
+				])
+			];
+			assert.deepStrictEqual(mfm.parse(input), output);
+		});
+		it('内容は改行できる', () => {
+			const input = '<smell>abc\n**123**\nabc</smell>';
+			const output = [
+				SMELL([
 					TEXT('abc\n'),
 					BOLD([
 						TEXT('123')
@@ -1277,6 +1315,18 @@ hoge`;
 				ITALIC([
 					ITALIC([
 						TEXT('<small>abc</small>'),
+					]),
+				]),
+			];
+			assert.deepStrictEqual(mfm.parse(input, { nestLimit: 2 }), output);
+		});
+
+		it('smell', () => {
+			const input = '<i><i><smell>abc</smell></i></i>';
+			const output = [
+				ITALIC([
+					ITALIC([
+						TEXT('<smell>abc</smell>'),
 					]),
 				]),
 			];
