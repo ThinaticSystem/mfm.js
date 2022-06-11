@@ -1,5 +1,5 @@
 {
-  "name": "mfm-js",
+  "name": "mfm-js-honisskey-edition",
   "version": "0.22.1",
   "description": "An MFM parser implementation with PEG.js",
   "main": "./built/index.js",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/misskey-dev/mfm.js.git"
   },
-  "author": "Marihachi",
+  "author": "ThinaticSystem",
   "license": "MIT",
   "devDependencies": {
     "@microsoft/api-extractor": "^7.18.4",
